@@ -1,7 +1,27 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends, Body
+from pydantic import BaseModel, Field
 import random
 import time
 from log_middleware import LogMiddleware
+
+
+class ItemCreate(BaseModel):
+    name: str
+    description: str | None = None
+
+
+class ItemUpdate(BaseModel):
+    name: str
+    description: str | None = None
+
+
+class UserCreate(BaseModel):
+    username: str
+
+
+class UserUpdate(BaseModel):
+    username: str
+
 
 app = FastAPI()
 
@@ -31,19 +51,19 @@ def read_item(item_id: int, q: str = None):
 
 
 @app.post("/create-item/")
-def create_item(name: str, description: str = None):
+def create_item(item: ItemCreate = Body(...)):
     time.sleep(random.uniform(0.1, 0.3))
-    return {"name": name, "description": description}
+    return {"name": item.name, "description": item.description}
 
 
 @app.put("/update-item/{item_id}")
-def update_item(item_id: int, name: str, description: str = None):
+def update_item(item_id: int, item: ItemUpdate = Body(...)):
     time.sleep(random.uniform(0.1, 0.3))
 
     if random.random() < 0.03:
         raise HTTPException(status_code=400, detail="Invalid item data")
 
-    return {"item_id": item_id, "name": name, "description": description}
+    return {"item_id": item_id, "name": item.name, "description": item.description}
 
 
 @app.delete("/delete-item/{item_id}")
@@ -59,13 +79,13 @@ def list_users():
 
 
 @app.post("/users/")
-def create_user(username: str):
+def create_user(user: UserCreate = Body(...)):
     time.sleep(random.uniform(0.1, 0.25))
 
     if random.random() < 0.02:
         raise HTTPException(status_code=409, detail="Username already exists")
 
-    return {"message": f"User {username} has been created"}
+    return {"message": f"User {user.username} has been created"}
 
 
 @app.get("/users/{user_id}")
@@ -79,9 +99,9 @@ def get_user(user_id: int):
 
 
 @app.put("/users/{user_id}")
-def update_user(user_id: int, username: str):
+def update_user(user_id: int, user: UserUpdate = Body(...)):
     time.sleep(random.uniform(0.1, 0.3))
-    return {"user_id": user_id, "updated_username": username}
+    return {"user_id": user_id, "updated_username": user.username}
 
 
 @app.delete("/users/{user_id}")
