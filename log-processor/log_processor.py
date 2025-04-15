@@ -20,7 +20,6 @@ def create_tables(conn):
     """Create necessary tables if they don't exist."""
     cursor = conn.cursor()
 
-    # Request logs table
     cursor.execute(
         """
         CREATE TABLE IF NOT EXISTS request_logs (
@@ -36,7 +35,6 @@ def create_tables(conn):
     """
     )
 
-    # Response logs table
     cursor.execute(
         """
         CREATE TABLE IF NOT EXISTS response_logs (
@@ -51,7 +49,6 @@ def create_tables(conn):
     """
     )
 
-    # Error logs table
     cursor.execute(
         """
         CREATE TABLE IF NOT EXISTS error_logs (
@@ -180,7 +177,6 @@ def main():
                 print("Maximum retries reached. Exiting...")
                 return
 
-    # Try to connect to Kafka
     for i in range(max_retries):
         try:
             consumer = KafkaConsumer(

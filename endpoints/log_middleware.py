@@ -74,15 +74,26 @@ class LogMiddleware(BaseHTTPMiddleware):
             response = await call_next(request)
             process_time = time.time() - start_time
 
-            response_info = {
-                "request_id": request_id,
-                "status_code": response.status_code,
-                "processing_time_ms": process_time * 1000,
-                "timestamp": time.time(),
-                "hostname": self.hostname,
-            }
+            if response.status_code >= 400:
+                error_info = {
+                    "request_id": request_id,
+                    "error": f"HTTP {response.status_code}",
+                    "traceback": "",
+                    "processing_time_ms": process_time * 1000,
+                    "timestamp": time.time(),
+                    "hostname": self.hostname,
+                }
+                self._send_to_kafka(self.error_topic, request_id, error_info)
+            else:
+                response_info = {
+                    "request_id": request_id,
+                    "status_code": response.status_code,
+                    "processing_time_ms": process_time * 1000,
+                    "timestamp": time.time(),
+                    "hostname": self.hostname,
+                }
+                self._send_to_kafka(self.response_topic, request_id, response_info)
 
-            self._send_to_kafka(self.response_topic, request_id, response_info)
             response.headers["X-Process-Time"] = str(process_time)
             return response
 
