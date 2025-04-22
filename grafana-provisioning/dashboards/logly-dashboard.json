@@ -1,0 +1,833 @@
+{
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": {
+                    "type": "grafana",
+                    "uid": "-- Grafana --"
+                },
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "graphTooltip": 0,
+    "id": 2,
+    "links": [],
+    "panels": [
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 0,
+                "y": 0
+            },
+            "id": 1,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT COUNT(*) as count FROM request_logs WHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz));",
+                    "refId": "A"
+                }
+            ],
+            "title": "Request Log Count",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "blue"
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 8,
+                "y": 0
+            },
+            "id": 7,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT COUNT(*) as count FROM response_logs WHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz));",
+                    "refId": "A"
+                }
+            ],
+            "title": "Response Log Count",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "red"
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 16,
+                "y": 0
+            },
+            "id": 8,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "area",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT COUNT(*) as count FROM error_logs WHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz));",
+                    "refId": "A"
+                }
+            ],
+            "title": "Error Log Count",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 0,
+                "y": 8
+            },
+            "id": 2,
+            "options": {
+                "colorMode": "value",
+                "graphMode": "none",
+                "justifyMode": "auto",
+                "orientation": "auto",
+                "percentChangeColorMode": "standard",
+                "reduceOptions": {
+                    "calcs": [
+                        "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                },
+                "showPercentChange": false,
+                "textMode": "auto",
+                "wideLayout": true
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT 'Request Logs' as category, COUNT(*) as count FROM request_logs WHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz)) UNION ALL\nSELECT 'Response Logs' as category, COUNT(*) as count FROM response_logs WHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz)) UNION ALL\nSELECT 'Error Logs' as category, COUNT(*) as count FROM error_logs WHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz));",
+                    "refId": "A"
+                }
+            ],
+            "title": "Log Counts",
+            "type": "stat"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "filterable": false,
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 8,
+                "y": 8
+            },
+            "id": 3,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  split_part(url, '?', 1) as endpoint,\n  method,\n  COUNT(*) as request_count\nFROM request_logs\nWHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\nGROUP BY endpoint, method\nORDER BY request_count DESC\nLIMIT 10;",
+                    "refId": "A"
+                }
+            ],
+            "title": "Most Frequently Hit Endpoints",
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "filterable": false,
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "blue"
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 8,
+                "x": 16,
+                "y": 8
+            },
+            "id": 4,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  split_part(url, '?', 1) as endpoint,\n  method,\n  COUNT(*) as request_count\nFROM request_logs\nWHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\nGROUP BY endpoint, method\nHAVING COUNT(*) > 0\nORDER BY request_count ASC\nLIMIT 10;",
+                    "refId": "A"
+                }
+            ],
+            "title": "Least Frequently Hit Endpoints",
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "filterable": false,
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            },
+                            {
+                                "color": "yellow",
+                                "value": 200
+                            },
+                            {
+                                "color": "red",
+                                "value": 500
+                            }
+                        ]
+                    },
+                    "unit": "ms"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 16
+            },
+            "id": 5,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  r.method,\n  split_part(r.url, '?', 1) as endpoint,\n  COUNT(*) as request_count,\n  AVG(s.processing_time_ms) as avg_response_time\nFROM request_logs r\nJOIN response_logs s ON r.request_id = s.request_id\nWHERE r.timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND r.timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\nGROUP BY r.method, endpoint\nORDER BY avg_response_time DESC;",
+                    "refId": "A"
+                }
+            ],
+            "title": "Average Response Time by Endpoint",
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "filterable": false,
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            },
+                            {
+                                "color": "red",
+                                "value": 400
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 16
+            },
+            "id": 6,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  status_code,\n  CASE\n    WHEN status_code BETWEEN 200 AND 299 THEN '2xx Success'\n    WHEN status_code BETWEEN 300 AND 399 THEN '3xx Redirection'\n    WHEN status_code BETWEEN 400 AND 499 THEN '4xx Client Error'\n    WHEN status_code BETWEEN 500 AND 599 THEN '5xx Server Error'\n    ELSE 'Other'\n  END as status_type,\n  COUNT(*) as count,\n  ROUND(COUNT(*) * 100.0 / (SELECT COUNT(*) FROM response_logs WHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))), 2) as percentage\nFROM response_logs\nWHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\nGROUP BY status_code, status_type\nORDER BY status_code;",
+                    "refId": "A"
+                }
+            ],
+            "title": "Status Code Distribution",
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "filterable": false,
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            },
+                            {
+                                "color": "red",
+                                "value": 80
+                            }
+                        ]
+                    }
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 24
+            },
+            "id": 9,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  error,\n  COUNT(*) as occurrence_count,\n  AVG(processing_time_ms) as avg_processing_time\nFROM error_logs\nWHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\nGROUP BY error\nORDER BY occurrence_count DESC\nLIMIT 20;",
+                    "refId": "A"
+                }
+            ],
+            "title": "Most Common Errors",
+            "type": "table"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "palette-classic"
+                    },
+                    "custom": {
+                        "axisBorderShow": false,
+                        "axisCenteredZero": false,
+                        "axisColorMode": "text",
+                        "axisLabel": "",
+                        "axisPlacement": "auto",
+                        "barAlignment": 0,
+                        "barWidthFactor": 0.6,
+                        "drawStyle": "line",
+                        "fillOpacity": 10,
+                        "gradientMode": "none",
+                        "hideFrom": {
+                            "legend": false,
+                            "tooltip": false,
+                            "viz": false
+                        },
+                        "insertNulls": false,
+                        "lineInterpolation": "smooth",
+                        "lineWidth": 2,
+                        "pointSize": 5,
+                        "scaleDistribution": {
+                            "type": "linear"
+                        },
+                        "showPoints": "never",
+                        "spanNulls": true,
+                        "stacking": {
+                            "group": "A",
+                            "mode": "none"
+                        },
+                        "thresholdsStyle": {
+                            "mode": "off"
+                        }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            },
+                            {
+                                "color": "yellow",
+                                "value": 200
+                            },
+                            {
+                                "color": "red",
+                                "value": 500
+                            }
+                        ]
+                    },
+                    "unit": "ms"
+                },
+                "overrides": []
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 24
+            },
+            "id": 10,
+            "options": {
+                "legend": {
+                    "calcs": [
+                        "mean",
+                        "max"
+                    ],
+                    "displayMode": "table",
+                    "placement": "bottom",
+                    "showLegend": true
+                },
+                "tooltip": {
+                    "hideZeros": false,
+                    "mode": "multi",
+                    "sort": "desc"
+                }
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "time_series",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  to_timestamp(floor(r.timestamp/300)*300) AS time,\n  split_part(r.url, '?', 1) as endpoint,\n  AVG(s.processing_time_ms) as avg_response_time\nFROM request_logs r\nJOIN response_logs s ON r.request_id = s.request_id\nWHERE r.timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND r.timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\nGROUP BY time, split_part(r.url, '?', 1)\nHAVING split_part(r.url, '?', 1) IN (\n  SELECT split_part(url, '?', 1)\n  FROM request_logs\n  WHERE timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\n  GROUP BY split_part(url, '?', 1)\n  ORDER BY COUNT(*) DESC\n  LIMIT 5\n)\nORDER BY time, endpoint;",
+                    "refId": "A"
+                }
+            ],
+            "title": "Response Time Trends (Top 5 Endpoints)",
+            "type": "timeseries"
+        },
+        {
+            "datasource": {
+                "type": "postgres",
+                "uid": "postgres"
+            },
+            "fieldConfig": {
+                "defaults": {
+                    "color": {
+                        "mode": "thresholds"
+                    },
+                    "custom": {
+                        "align": "auto",
+                        "cellOptions": {
+                            "type": "auto"
+                        },
+                        "filterable": true,
+                        "inspect": false
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                        "mode": "absolute",
+                        "steps": [
+                            {
+                                "color": "green"
+                            },
+                            {
+                                "color": "red",
+                                "value": 400
+                            }
+                        ]
+                    }
+                },
+                "overrides": [
+                    {
+                        "matcher": {
+                            "id": "byName",
+                            "options": "time"
+                        },
+                        "properties": [
+                            {
+                                "id": "custom.width",
+                                "value": 190
+                            }
+                        ]
+                    }
+                ]
+            },
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 32
+            },
+            "id": 11,
+            "options": {
+                "cellHeight": "sm",
+                "footer": {
+                    "countRows": false,
+                    "fields": "",
+                    "reducer": [
+                        "sum"
+                    ],
+                    "show": false
+                },
+                "showHeader": true,
+                "sortBy": [
+                    {
+                        "desc": true,
+                        "displayName": "time"
+                    }
+                ]
+            },
+            "pluginVersion": "11.6.0",
+            "targets": [
+                {
+                    "datasource": {
+                        "type": "postgres",
+                        "uid": "postgres"
+                    },
+                    "editorMode": "code",
+                    "format": "table",
+                    "rawQuery": true,
+                    "rawSql": "SELECT\n  to_timestamp(req.timestamp) as time,\n  'Request' as log_type,\n  req.request_id,\n  req.method,\n  split_part(req.url, '?', 1) as endpoint,\n  req.client_host\nFROM request_logs req\nWHERE req.timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND req.timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\n\nUNION ALL\n\nSELECT\n  to_timestamp(resp.timestamp) as time,\n  'Response' as log_type,\n  resp.request_id,\n  '' as method,\n  resp.status_code::text as endpoint,\n  resp.processing_time_ms::text as client_host\nFROM response_logs resp\nWHERE resp.timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND resp.timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\n\nUNION ALL\n\nSELECT\n  to_timestamp(err.timestamp) as time,\n  'Error' as log_type,\n  err.request_id,\n  '' as method,\n  err.error as endpoint,\n  '' as client_host\nFROM error_logs err\nWHERE err.timestamp >= EXTRACT(EPOCH FROM ($__timeFrom()::timestamptz)) AND err.timestamp <= EXTRACT(EPOCH FROM ($__timeTo()::timestamptz))\n\nORDER BY time DESC\nLIMIT 100;",
+                    "refId": "A"
+                }
+            ],
+            "title": "Real-Time Logs Feed",
+            "type": "table"
+        }
+    ],
+    "preload": false,
+    "refresh": "5s",
+    "schemaVersion": 41,
+    "tags": [],
+    "templating": {
+        "list": []
+    },
+    "time": {
+        "from": "now-24h",
+        "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "Logly Dashboard",
+    "uid": "logly-dashboard",
+    "version": 17
+}
